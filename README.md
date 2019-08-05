@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://cl.ly/99e68ac49cef/Logo2x.png" height="200">
+    <img src="https://user-images.githubusercontent.com/19808920/58770949-bd9c7900-857f-11e9-8558-5dfaffddffda.png" height="200">
 </p>
 
 
@@ -131,11 +131,11 @@ You can also view the [full list of supported HomeKit Services and Characteristi
 
 See more examples on how to create Platform classes in the [Legacy Plugins](https://github.com/nfarina/homebridge-legacy-plugins/tree/master/platforms) repository.
 
-## Writing Plugins (ES6)
+## Writing Plugins (ES6/TypeScript)
 
 Your plugin may need to perform a lot of asynchronous communication with 3rd-party services. To avoid "callback hell", you might try using next-generation JavaScript features like **async/await**.
 
-Check out the [`homebridge-tesla`](https://github.com/nfarina/homebridge-tesla) plugin for an example of how to write ES6 code and transpile with [Babel](https://babeljs.io) and [Rollup](http://rollupjs.org) for distribution.
+Check out the [`homebridge-tesla`](https://github.com/nfarina/homebridge-tesla) plugin for an example of how to write code in [TypeScript](https://github.com/nfarina/homebridge-tesla) or [ES6+Flow](https://github.com/nfarina/homebridge-tesla/tree/c9ddde85f60790614e5dd1960897a56cb93fde13) and transpile with [Babel](https://babeljs.io) and [Rollup](http://rollupjs.org) for distribution.
 
 ## Plugin Development
 
@@ -162,6 +162,8 @@ Two reasons why Homebridge may not be discoverable:
   1. Homebridge server thinks it's been paired with, but iOS thinks otherwise. Fix: deleted `persist/` directory which is next to your `config.json`.
 
   2. iOS device has gotten your Homebridge `username` (looks like a MAC address) "stuck" somehow, where it's in the database but inactive. Fix: change your `username` in the "bridge" section of `config.json` to be some new value.
+  
+  3. iOS DNS cache has gone stale or gotten misconfigured. Fix: Turn airplane mode on and back off to flush the DNS cache. (This is a temporary fix, but can be repeated when the problem recurs. No permanent fix is as yet known/confirmed. If you're experiencing this as a recurrent issue, it likely affects other bonjour and .local DNS resolution services, for which cycling airplane mode will also temporarily resolve.)
 
 ### Errors on startup
 
